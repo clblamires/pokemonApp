@@ -1,9 +1,25 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>PokemonList</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Pokemon</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-toolbar color="primary">
+    <ion-searchbar
+      [(ngModel)]="searchQuery"
+      (ionInput)="getPokemonNames($event)"
+      (ionClear)="resetList($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+  <ion-virtual-scroll padding [items]="pokemon">
+    <ion-item *virtualItem="let p; let i = index" (click)="gotoPokemon(p.id)">
+      <ion-label>
+        <span class="pokedex">#{{ p.id }}</span>
+        {{ p.name.english }}
+      </ion-label>
+      <ion-icon name="arrow-forward" end></ion-icon>
+    </ion-item>
+  </ion-virtual-scroll>
+  
 </ion-content>
