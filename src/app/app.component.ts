@@ -4,7 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { PokemonNamesService } from './pokemon-names.service';
+// import { PokemonNamesService } from './pokemon-names.service';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +15,10 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public pokemonNames: PokemonNamesService
+    // public pokemonNames: PokemonNamesService
   ) {
     this.initializeApp();
-    pokemonNames.load();
+    // pokemonNames.load();
   }
 
   initializeApp() {

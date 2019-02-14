@@ -1,5 +1,6 @@
 import { PokemonNamesService } from './../pokemon-names.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,7 +12,7 @@ export class PokemonListPage implements OnInit {
   pokemon: string[] = [];
   searchQuery: string = '';
 
-  constructor( public pokemonNames: PokemonNamesService) {
+  constructor( public pokemonNames: PokemonNamesService, public router: Router) {
     pokemonNames.getPokemonNames().then(data =>{
       this.pokemon = data;
     })
@@ -50,7 +51,8 @@ export class PokemonListPage implements OnInit {
 
   // gotoPokemon - go to the pokemon's details page
   gotoPokemon( i ){
-    console.log(i);
+    let url = '/pokemon-details/' + i;;
+    this.router.navigate([url]);
   }
 
   ngOnInit() {

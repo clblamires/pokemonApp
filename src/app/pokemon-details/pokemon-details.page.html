@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>PokemonDetails</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ capitalize(name) }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-img [src]="pokemonInfo?.sprites.front_default" class="pokemon-image"></ion-img>
+  <h1>{{ capitalize(name) }}</h1>
+  <h4>Pokedex Number: {{ pokemonInfo?.id }}</h4>
 
+  <ion-card padding>
+    <h4>Moves</h4>
+    <ion-list>
+      <ion-item *ngFor="let m of pokemonInfo?.moves">
+        <ion-label>{{ capitalize(m.move.name) }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
